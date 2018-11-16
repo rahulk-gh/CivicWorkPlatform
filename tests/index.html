@@ -18,7 +18,9 @@
 </html>
 <script>
     var myStory ={
-        storyText : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        storyText : 'Lorem ipsum dolor sit amet. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+
+        dummy :"lksdjfaksjdf;",    
 
         VoteArray:[0],
 
@@ -57,7 +59,7 @@ function mouseOver() {
 function mouseOut() {
     myId.style.color = "black";
     
-    
+
 }
 
 myId.onclick = foo;
@@ -66,6 +68,71 @@ function foo () {
     console.log(this.innerHTML);
 }
 
+
+var text1 = "We have to give some attention to Kuhnhackl here because this is the type of game he just does not have. He not only scored one of the weirdest goals of the season (watch it here) when he somehow slipped the puck behind Jakob Markstrom while falling to the ice and looking in the wrong direction, but then he went and added another goal later in the game to help the Islanders pick up a 5-2 win over the Vancouver Canucks. With his two goals on Tuesday night he now has three goals on the season in only seven games. Keep in mind he only scored two goals in 69 games a year ago, and only four in 57 games the year before that, and only five in 42 games the year before that.";
+
+//Below is the tagging funcitonality
+// var hit = myStory.storyText.search(/\b\.\s[A-Z]/);
+// console.log("hit at " + hit);
+
+// var allhits= myStory.storyText.split(/\b\.\s/);
+// for (i=0;i<allhits.length;i++){
+//     allhits[i]= "<myTag class>"+ allhits[i]+ ("</myTag>");
+// }
+
+// var reconstructed = ""
+// for (j=0;j<allhits.length;j++){
+//     reconstructed = reconstructed +" " +allhits[j];
+// } 
+
+var allhits= text1.split(/\b\.\s/);
+for (i=0;i<allhits.length;i++){
+    allhits[i]= "<myTag class>"+ allhits[i]+ ("</myTag>");
+}
+
+var reconstructed = ""
+for (j=0;j<allhits.length;j++){
+    reconstructed = reconstructed +" " +allhits[j];
+}
+
+// var fullTag = function( arr2) {
+//     var j = 0; 
+//     do {
+//         if(arr2.search(/\b\.\s[A-Z]/) >=0){
+//             j = arr2.search(/\b\.\s[A-Z]/);
+//             arr2.replace(/\b\.\s/, "<mytag>");
+//         }
+//         else {break;}
+//     } while(!j>=0);
+
+// }
+    // var j = 0;
+    // do  {
+    //     j= arr2.search(/\b\.\s[A-Z]/);
+    //     if (j>0){
+    //         allhits.push(j);
+    //     } 
+    //     arr2.replace(". ", "<mytag>");
+    // } while (j>0);
+    
+    // var reg = "/\b\.\s[A-Z]/";
+    // while((allhits =reg.exec(myStory.storyText))!==null){console.log("Found "+allhits[0]  )};
+
+
+//VVVVVVVVVVVVVVVVVVVVVVV below is from w3
+  
+    // var txt = str.replace(/microsoft/i,"W3Schools");
+  
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+
+// console.log("Below is what you should see");
+// // var regArr= fullTag(myStory.storyText);
+
+// -------------------------------------
+// fullTag(myStory.storyText);
+// console.log(allhits[1]);
+//------------------------------------------------------------------------------
 // function displayDate() {
 //     document.getElementById("test1").innerHTML = Date();
 // }
