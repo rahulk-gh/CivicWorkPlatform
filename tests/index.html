@@ -14,6 +14,8 @@
     <div id="test1">
 
     </div>
+    <br>
+    <div id ="tested1">here is a new div </div>
 </body>
 </html>
 <script>
@@ -41,6 +43,11 @@ console.log(myStory.storyText[2]); // line to test if we can get to story
 
 //functionality to hover over a sentence and when clicked grab text for any processing-----------------------------------
 //can this functionality be pushed into the css instead of inline? 
+/*
+
+
+*/
+
 var myId = document.getElementById("sentence2");
 
 myId.addEventListener("mouseover", mouseOver);
@@ -58,14 +65,20 @@ myId.onclick = foo;
 function foo () {
 // alert(Date());
 console.log(this.innerHTML);
+document.getElementById('tested1').innerText = this.innerHTML;
 }
 
 //functionality for taking plain text and processing it.
-// need to put this is a function and test if you can do within object or with constructors
 //to use below console log text1, allhits and reconstructed
+/*??????????????????????????????????????
+need to put this is a function and test if you can do within object or with constructors
+ 
+
+*/
+
 var allhits= text1.split(/\b\.\s/);
 for (i=0;i<allhits.length;i++){
-    allhits[i]= "<myTag class>"+ allhits[i]+ ("</myTag>");
+    allhits[i]= '<span id="sentence'+ i + '">'+ allhits[i]+ ("</span>");
 }
 
 //concatenated split strings from above, into one string. 
