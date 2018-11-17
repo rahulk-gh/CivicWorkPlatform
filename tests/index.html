@@ -17,6 +17,7 @@
 </body>
 </html>
 <script>
+    //below is an object storing a story, its processed and tagged form, array to track - line number and votes, id of story, id of author. Will probably need more
     var myStory ={
         storyText : 'Lorem ipsum dolor sit amet. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 
@@ -28,11 +29,53 @@
 
         id :1234,
 
+        authID :4567,
+
         dateCreated:""
     }
 
-    console.log(myStory.storyText[2]);
-    
+    //Alternative text to test-------------------------------------------
+    var text1 = "We have to give some attention to Kuhnhackl here because this is the type of game he just does not have. He not only scored one of the weirdest goals of the season (watch it here) when he somehow slipped the puck behind Jakob Markstrom while falling to the ice and looking in the wrong direction, but then he went and added another goal later in the game to help the Islanders pick up a 5-2 win over the Vancouver Canucks. With his two goals on Tuesday night he now has three goals on the season in only seven games. Keep in mind he only scored two goals in 69 games a year ago, and only four in 57 games the year before that, and only five in 42 games the year before that.";
+
+console.log(myStory.storyText[2]); // line to test if we can get to story
+
+//functionality to hover over a sentence and when clicked grab text for any processing-----------------------------------
+//can this functionality be pushed into the css instead of inline? 
+var myId = document.getElementById("sentence2");
+
+myId.addEventListener("mouseover", mouseOver);
+myId.addEventListener("mouseout", mouseOut);
+
+function mouseOver() {
+myId.style.color = "green" ;
+}
+
+function mouseOut() {
+myId.style.color = "black";
+}
+
+myId.onclick = foo;
+function foo () {
+// alert(Date());
+console.log(this.innerHTML);
+}
+
+//functionality for taking plain text and processing it.
+// need to put this is a function and test if you can do within object or with constructors
+//to use below console log text1, allhits and reconstructed
+var allhits= text1.split(/\b\.\s/);
+for (i=0;i<allhits.length;i++){
+    allhits[i]= "<myTag class>"+ allhits[i]+ ("</myTag>");
+}
+
+//concatenated split strings from above, into one string. 
+var reconstructed = ""
+for (j=0;j<allhits.length;j++){
+    reconstructed = reconstructed +" " +allhits[j];
+}
+
+//----------code graveyard------------------------------------------------------------------------------
+    //code to tag lines with switch...incomplete idea...could potentially work
     //have to figure out before beginning of line and at the end of the line
     //May need to use regex
     // var tagger = function(arr) {
@@ -47,29 +90,9 @@
     //     }
     // }
 
-    var myId = document.getElementById("sentence2");
-
-    myId.addEventListener("mouseover", mouseOver);
-    myId.addEventListener("mouseout", mouseOut);
-
-function mouseOver() {
-    myId.style.color = "green" ;
-}
-
-function mouseOut() {
-    myId.style.color = "black";
-    
-
-}
-
-myId.onclick = foo;
-function foo () {
-    // alert(Date());
-    console.log(this.innerHTML);
-}
 
 
-var text1 = "We have to give some attention to Kuhnhackl here because this is the type of game he just does not have. He not only scored one of the weirdest goals of the season (watch it here) when he somehow slipped the puck behind Jakob Markstrom while falling to the ice and looking in the wrong direction, but then he went and added another goal later in the game to help the Islanders pick up a 5-2 win over the Vancouver Canucks. With his two goals on Tuesday night he now has three goals on the season in only seven games. Keep in mind he only scored two goals in 69 games a year ago, and only four in 57 games the year before that, and only five in 42 games the year before that.";
+
 
 //Below is the tagging funcitonality
 // var hit = myStory.storyText.search(/\b\.\s[A-Z]/);
@@ -85,15 +108,7 @@ var text1 = "We have to give some attention to Kuhnhackl here because this is th
 //     reconstructed = reconstructed +" " +allhits[j];
 // } 
 
-var allhits= text1.split(/\b\.\s/);
-for (i=0;i<allhits.length;i++){
-    allhits[i]= "<myTag class>"+ allhits[i]+ ("</myTag>");
-}
 
-var reconstructed = ""
-for (j=0;j<allhits.length;j++){
-    reconstructed = reconstructed +" " +allhits[j];
-}
 
 // var fullTag = function( arr2) {
 //     var j = 0; 
