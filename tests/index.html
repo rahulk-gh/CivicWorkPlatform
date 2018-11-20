@@ -14,6 +14,12 @@
     <div id="test1">
 
     </div>
+    <br>
+    <div id ="tested1">here is a new div </div>
+
+    <br>
+    <div class ="test2"><div class="dumbo"> <span id="sentence0">Lorem ipsum dolor sit amet</span> <span id="sentence1">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span> <span id="sentence2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</span> <span id="sentence3">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</span> <span id="sentence4">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div> </div>
+
 </body>
 </html>
 <script>
@@ -21,7 +27,7 @@
     var myStory ={
         storyText : 'Lorem ipsum dolor sit amet. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 
-        dummy :"lksdjfaksjdf;",    
+        dummy :"lksdjfaksjdf;",
 
         VoteArray:[0],
 
@@ -41,6 +47,35 @@ console.log(myStory.storyText[2]); // line to test if we can get to story
 
 //functionality to hover over a sentence and when clicked grab text for any processing-----------------------------------
 //can this functionality be pushed into the css instead of inline? 
+/*
+
+The bottom thing work but not sure what its returning..It works well for className, doesnt work for idname
+*/
+
+window.onmouseover=function(e) {
+        console.log(e.target.className);
+};
+// var myclass = document.getElementsByClassName("dumbo");
+
+// myclass.addEventListener("mouseover", mouseOver);
+// myclass.addEventListener("mouseout", mouseOut);
+
+// function mouseOver() {
+// myclass.style.color = "green" ;
+// }
+
+// function mouseOut() {
+// myclass.style.color = "black";
+// }
+
+// myId.onclick = foo;
+// function foo () {
+// // alert(Date());
+// console.log(this.innerHTML);
+// document.getElementById('tested1').innerText = this.innerHTML;
+// }
+
+// bottom functionality works. top conversion for the whole class did not work
 var myId = document.getElementById("sentence2");
 
 myId.addEventListener("mouseover", mouseOver);
@@ -58,21 +93,49 @@ myId.onclick = foo;
 function foo () {
 // alert(Date());
 console.log(this.innerHTML);
+document.getElementById('tested1').innerText = this.innerHTML;
 }
 
 //functionality for taking plain text and processing it.
-// need to put this is a function and test if you can do within object or with constructors
 //to use below console log text1, allhits and reconstructed
-var allhits= text1.split(/\b\.\s/);
-for (i=0;i<allhits.length;i++){
-    allhits[i]= "<myTag class>"+ allhits[i]+ ("</myTag>");
+/*??????????????????????????????????????
+need to put this is a function and test if you can do within object or with constructors
+ 
+
+*/
+var taggerfoo = function(arr) {
+
+    var allhitsArr= arr.split(/\b\.\s/);
+    for (i=0;i<allhitsArr.length;i++){
+        allhitsArr[i]= '<span id="sentence'+ i + '">'+ allhitsArr[i]+ ("</span>");
+    } 
+    
+    var reconstructedStory = ""
+    for (j=0;j<allhitsArr.length;j++){
+        reconstructedStory = reconstructedStory +" " +allhitsArr[j];
+    }
+    reconstructedStory = '<div class="dumbo">' + reconstructedStory + '</div>';
+    return reconstructedStory;
 }
 
-//concatenated split strings from above, into one string. 
-var reconstructed = ""
-for (j=0;j<allhits.length;j++){
-    reconstructed = reconstructed +" " +allhits[j];
-}
+myStory.flaggedText= taggerfoo(myStory.storyText);
+
+/*
+
+Below is code that tagger foo is built off
+
+*/
+// var allhits= text1.split(/\b\.\s/);
+// for (i=0;i<allhits.length;i++){
+//     allhits[i]= '<span id="sentence'+ i + '">'+ allhits[i]+ ("</span>");
+// }
+
+// //concatenated split strings from above, into one string. 
+// var reconstructed = ""
+// for (j=0;j<allhits.length;j++){
+//     reconstructed = reconstructed +" " +allhits[j];
+// }
+
 
 //----------code graveyard------------------------------------------------------------------------------
     //code to tag lines with switch...incomplete idea...could potentially work
@@ -92,46 +155,8 @@ for (j=0;j<allhits.length;j++){
 
 
 
+// (/\b\.\s[A-Z]/);
 
-
-//Below is the tagging funcitonality
-// var hit = myStory.storyText.search(/\b\.\s[A-Z]/);
-// console.log("hit at " + hit);
-
-// var allhits= myStory.storyText.split(/\b\.\s/);
-// for (i=0;i<allhits.length;i++){
-//     allhits[i]= "<myTag class>"+ allhits[i]+ ("</myTag>");
-// }
-
-// var reconstructed = ""
-// for (j=0;j<allhits.length;j++){
-//     reconstructed = reconstructed +" " +allhits[j];
-// } 
-
-
-
-// var fullTag = function( arr2) {
-//     var j = 0; 
-//     do {
-//         if(arr2.search(/\b\.\s[A-Z]/) >=0){
-//             j = arr2.search(/\b\.\s[A-Z]/);
-//             arr2.replace(/\b\.\s/, "<mytag>");
-//         }
-//         else {break;}
-//     } while(!j>=0);
-
-// }
-    // var j = 0;
-    // do  {
-    //     j= arr2.search(/\b\.\s[A-Z]/);
-    //     if (j>0){
-    //         allhits.push(j);
-    //     } 
-    //     arr2.replace(". ", "<mytag>");
-    // } while (j>0);
-    
-    // var reg = "/\b\.\s[A-Z]/";
-    // while((allhits =reg.exec(myStory.storyText))!==null){console.log("Found "+allhits[0]  )};
 
 
 //VVVVVVVVVVVVVVVVVVVVVVV below is from w3
