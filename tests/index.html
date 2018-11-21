@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="test1">
-        <a href= "" id = "sentence1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a> <span id = "sentence2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <a href= "" id = "oldsentence1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a> <span id = "oldsentence2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
 
     <div id="test1">
@@ -52,20 +52,66 @@ console.log(myStory.storyText[2]); // line to test if we can get to story
 The bottom thing work but not sure what its returning..It works well for className, doesnt work for idname
 */
 
-window.onmouseover=function(e) {
-        console.log(e.target.className);
+var selected = []
+var text ;
+window.onmouseover = function(e) {
+        text = e.target.id
+        console.log(text)
+        if (!selected.includes(text)) {
+          document.getElementById(text).style.backgroundColor = "Yellow"
+        }
 };
-// var myclass = document.getElementsByClassName("dumbo");
 
-// myclass.addEventListener("mouseover", mouseOver);
-// myclass.addEventListener("mouseout", mouseOut);
+window.onmouseout = function(e) {
+  if (!selected.includes(text)) {
+    document.getElementById(text).style.backgroundColor = "White"
+  }
+}
 
-// function mouseOver() {
-// myclass.style.color = "green" ;
+window.onclick = function(e) {
+  if (!selected.includes(text)) {
+    document.getElementById(e.target.id).style.backgroundColor = "Orange"
+    selected.push(e.target.id)
+    console.log(selected)
+  }
+  else {
+    var a = selected.indexOf(e.target.id)
+    selected.splice(a)
+    document.getElementById(e.target.id).style.backgroundColor = "White"
+  }
+}
+
+// //this works with but full body is selected
+// var myId ;//no initialized value
+// window.onmouseover=function(e) {
+//         console.log(e.target.id);
+//         myId = e.target.id;
+//         console.log( "myId is = " + myId);
+//         // mouseOverX;
+//         e.target.style.backgroundColor = "green" ;
+// };
+// console.log( "myId is = " + myId);
+
+// window.onmouseout = function(e) {
+//     e.target.style.backgroundColor = "white" ;
 // }
+//-------------------------------------------------------------------------------
+// bottom functionality works. top conversion for the whole class did not work
 
+//window.onmouseover=function(e) {
+//        console.log(e.target.id);}
+// var myId = document.getElementById("sentence2");
+
+// myId.addEventListener("mouseover", mouseOver);
+// myId.addEventListener("mouseout", mouseOut);
+//
+//function mouseOver() {
+//myId.style.color = "green" ;
+//style.fontSize = "xx-large";
+//}
+//
 // function mouseOut() {
-// myclass.style.color = "black";
+// myId.style.color = "black";
 // }
 
 // myId.onclick = foo;
@@ -74,27 +120,6 @@ window.onmouseover=function(e) {
 // console.log(this.innerHTML);
 // document.getElementById('tested1').innerText = this.innerHTML;
 // }
-
-// bottom functionality works. top conversion for the whole class did not work
-var myId = document.getElementById("sentence2");
-
-myId.addEventListener("mouseover", mouseOver);
-myId.addEventListener("mouseout", mouseOut);
-
-function mouseOver() {
-myId.style.color = "green" ;
-}
-
-function mouseOut() {
-myId.style.color = "black";
-}
-
-myId.onclick = foo;
-function foo () {
-// alert(Date());
-console.log(this.innerHTML);
-document.getElementById('tested1').innerText = this.innerHTML;
-}
 
 //functionality for taking plain text and processing it.
 //to use below console log text1, allhits and reconstructed
