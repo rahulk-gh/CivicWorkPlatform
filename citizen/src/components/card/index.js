@@ -9,7 +9,9 @@ export const MyCard = (props) => {
     label,
     title,
     buttonText,
-    content
+    content,
+    toggleModal,
+    modalOpen,
   } = props;
 
   return (
@@ -26,8 +28,18 @@ export const MyCard = (props) => {
          </Typography>
        </CardContent>
        <CardActions>
-         <Button  variant="contained" size="small" color="primary">{ buttonText }</Button>
-         <MyModal />
+         <Button
+          onClick={toggleModal}
+          variant="contained"
+          size="small"
+          color="primary">
+          { buttonText }
+          </Button>
+          <MyModal
+           toggleModal={toggleModal}
+           modalOpen={modalOpen}
+           title={ label }
+           content={ content } />
        </CardActions>
      </Card>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Modal, Button, Typography, Paper } from "@material-ui/core"
-
+import { Modal, Typography, Paper } from "@material-ui/core"
 
 export default class MyModal extends React.Component {
   constructor(props){
@@ -9,10 +8,6 @@ export default class MyModal extends React.Component {
       open: false
     };
   }
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
 
   handleClose = () => {
     this.setState({ open: false });
@@ -30,24 +25,30 @@ export default class MyModal extends React.Component {
         padding: 20
       }
     }
+    const {
+      modalOpen,
+      toggleModal,
+      title,
+      content,
+    } = this.props;
+
     return (
       <div>
-        <Typography gutterBottom>Click to get the full Modal experience!</Typography>
-        <Button onClick={this.handleOpen}>Open Modal</Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={modalOpen}
+          onClose={toggleModal}
         >
           <div style={styles.modal}>
           <Paper style={styles.paper}>
             <Typography variant="h6" id="modal-title">
-              Text in a modal
+              {title}
             </Typography>
             <Typography variant="subtitle1" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              {content}
             </Typography>
+            <h3 onClick={toggleModal}>close me</h3>
             </Paper>
           </div>
         </Modal>
