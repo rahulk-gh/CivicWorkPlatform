@@ -75,12 +75,48 @@ window.onclick = function(e) {
     console.log(selected)
   }
   else {
+    
     var a = selected.indexOf(e.target.id)
-    selected.splice(a)
+    selected.splice(a, 1)
     document.getElementById(e.target.id).style.backgroundColor = "White"
+    console.log(selected)
   }
 }
+//----------roudy's code that allowed us to get rid of errors, broke something else
+// var selected = []
+// var text 
+// let spanHits = document.querySelector('span');
+// spanHits.onmouseover = function(e) {
+//         text = e.target.id
+//         console.log(text)
+//         if (!selected.includes(text)) {
+//           document.getElementById(text).style.backgroundColor = "Yellow"
+//         }
+// };
 
+// spanHits.onmouseout = function(e) {
+//   if (!selected.includes(text)) {
+//     document.getElementById(text).style.backgroundColor = "White"
+//   }
+// }
+
+// window.onclick = function(e) {
+//   if (!selected.includes(text)) {
+//     document.getElementById(e.target.id).style.backgroundColor = "Orange"
+//     selected.push(e.target.id)
+//     console.log(selected)
+//   }
+//   else {
+    
+//     var a = selected.indexOf(e.target.id)
+//     selected.splice(a, 1)
+//     document.getElementById(e.target.id).style.backgroundColor = "White"
+//     console.log(selected)
+//   }
+// }
+
+
+//------------------------------------------------------------------------------------
 // //this works with but full body is selected
 // var myId ;//no initialized value
 // window.onmouseover=function(e) {
