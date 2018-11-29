@@ -1,0 +1,168 @@
+.landing-grid {
+  text-align: center;
+  position: fixed;
+  top: 10;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+
+.landingPage2 {
+  background: lightgray;
+}
+
+img {
+  vertical-align: middle;
+  margin-top: 25px;
+}
+/*======================================================*/
+/* Resume Page css */
+/*======================================================*/
+.resume-right-col {
+  background: rgb(213, 216, 221);
+  color: black;
+  padding: 2em;
+}
+
+.hover-img p {
+  color: black;
+}
+
+
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: auto;
+}
+
+.social-skills i {
+  color: white;
+  font-size: 3em;
+  padding: 8px;
+  float: left;
+}
+
+.social-links i {
+  color: white;
+  font-size: 5em;
+  padding: 100px;
+}
+
+.light {
+  box-sizing: border-box;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+}
+
+/*=======================================================
+/*Contact page*/
+/*=======================================================
+
+/*Top section*/
+.top-contact-section {
+  background: lightgray;
+  margin-top: 74px;
+}
+
+.location-contact{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.location-contact h3 {
+  padding-top: 30px;
+}
+
+.location-contact-text{
+  text-align: center;
+}
+
+.phone-contact {
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+.email-contact {
+  margin-top: 10px; 
+  text-align: center;
+}
+
+.location-contact-header-text{
+  padding: 120px;
+}
+
+/*Contact Card*/
+
+.contact-form {
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background-color:rgb(145, 207, 236);
+  margin-left: 10px;
+}
+
+.btn-primary-active {
+  background-color:rgb(145, 207, 236);
+}
+
+.btn:hover, .btn-large:hover {
+  background-color: rgb(145, 207, 236);
+}
+
+
+.input-field input:focus + label {
+  color: rgb(145, 207, 236);
+}
+
+.row .input-field input:focus {
+  border-bottom: 1px solid rgb(145, 207, 236)!important;
+  box-shadow: 0 1px 0 0 rgb(145, 207, 236) !important
+}
+/*============================================*/
+/* Project Page */
+/*============================================*/
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-tab {
+  margin-top: 74px;
+}
+
+.project-tab-text {
+  font-size: 40px;
+}
+
+.mdl-card .mdl-shadow--16dp {
+  margin-bottom: 20px;
+}
+
+
+/*============================================*/
+/*Media Queries*/
+/*============================================*/
+@media (max-width: 768px) {
+  .light {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769px) {
+  .light {
+    width: 100%;
+    height: 100%;
+  }
+}

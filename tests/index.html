@@ -57,7 +57,7 @@ var text ;
 window.onmouseover = function(e) {
         text = e.target.id
         console.log(text)
-        if (!selected.includes(text)) {
+        if (selected.includes(text)) {
           document.getElementById(text).style.backgroundColor = "Yellow"
         }
 };
