@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Testing text foo</title>
+</head>
+<body>
+    <div class="test1">
+        <a href= "" id = "oldsentence1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a> <span id = "oldsentence2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+
+    <div id="test1">
+
+    </div>
+    <br>
+    <div id ="tested1">here is a new div </div>
+
+    <br>
+    <div class ="test2"><div class="dumbo"> <span id="sentence0">Lorem ipsum dolor sit amet</span> <span id="sentence1">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span> <span id="sentence2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</span> <span id="sentence3">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</span> <span id="sentence4">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div> </div>
+
+</body>
+</html>
+<script>
+    //below is an object storing a story, its processed and tagged form, array to track - line number and votes, id of story, id of author. Will probably need more
+    var myStory ={
+        storyText : 'Lorem ipsum dolor sit amet. consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+
+        dummy :"lksdjfaksjdf;",
+
+        VoteArray:[0],
+
+        flaggedText: "",
+
+        id :1234,
+
+        authID :4567,
+
+        dateCreated:""
+    }
+
+    //Alternative text to test-------------------------------------------
+    var text1 = "We have to give some attention to Kuhnhackl here because this is the type of game he just does not have. He not only scored one of the weirdest goals of the season (watch it here) when he somehow slipped the puck behind Jakob Markstrom while falling to the ice and looking in the wrong direction, but then he went and added another goal later in the game to help the Islanders pick up a 5-2 win over the Vancouver Canucks. With his two goals on Tuesday night he now has three goals on the season in only seven games. Keep in mind he only scored two goals in 69 games a year ago, and only four in 57 games the year before that, and only five in 42 games the year before that.";
+
+console.log(myStory.storyText[2]); // line to test if we can get to story
+
+//functionality to hover over a sentence and when clicked grab text for any processing-----------------------------------
+//can this functionality be pushed into the css instead of inline? 
+/*
+
+The bottom thing work but not sure what its returning..It works well for className, doesnt work for idname
+*/
+
+var selected = []
+var text ;
+window.onmouseover = function(e) {
+        text = e.target.id
+        console.log(text)
+        if (!selected.includes(text)) {
+          document.getElementById(text).style.backgroundColor = "Yellow"
+        }
+};
+
+window.onmouseout = function(e) {
+  if (!selected.includes(text)) {
+    document.getElementById(text).style.backgroundColor = "White"
+  }
+}
+
+window.onclick = function(e) {
+  if (!selected.includes(text)) {
+    document.getElementById(e.target.id).style.backgroundColor = "Orange"
+    selected.push(e.target.id)
+    console.log(selected)
+  }
+  else {
+    
+    var a = selected.indexOf(e.target.id)
+    selected.splice(a, 1)
+    document.getElementById(e.target.id).style.backgroundColor = "White"
+    console.log(selected)
+  }
+}
+//----------roudy's code that allowed us to get rid of errors, broke something else
+// var selected = []
+// var text 
+// let spanHits = document.querySelector('span');
+// spanHits.onmouseover = function(e) {
+//         text = e.target.id
+//         console.log(text)
+//         if (!selected.includes(text)) {
+//           document.getElementById(text).style.backgroundColor = "Yellow"
+//         }
+// };
+
+// spanHits.onmouseout = function(e) {
+//   if (!selected.includes(text)) {
+//     document.getElementById(text).style.backgroundColor = "White"
+//   }
+// }
+
+// window.onclick = function(e) {
+//   if (!selected.includes(text)) {
+//     document.getElementById(e.target.id).style.backgroundColor = "Orange"
+//     selected.push(e.target.id)
+//     console.log(selected)
+//   }
+//   else {
+    
+//     var a = selected.indexOf(e.target.id)
+//     selected.splice(a, 1)
+//     document.getElementById(e.target.id).style.backgroundColor = "White"
+//     console.log(selected)
+//   }
+// }
+
+
+//------------------------------------------------------------------------------------
+// //this works with but full body is selected
+// var myId ;//no initialized value
+// window.onmouseover=function(e) {
+//         console.log(e.target.id);
+//         myId = e.target.id;
+//         console.log( "myId is = " + myId);
+//         // mouseOverX;
+//         e.target.style.backgroundColor = "green" ;
+// };
+// console.log( "myId is = " + myId);
+
+// window.onmouseout = function(e) {
+//     e.target.style.backgroundColor = "white" ;
+// }
+//-------------------------------------------------------------------------------
+// bottom functionality works. top conversion for the whole class did not work
+
+//window.onmouseover=function(e) {
+//        console.log(e.target.id);}
+// var myId = document.getElementById("sentence2");
+
+// myId.addEventListener("mouseover", mouseOver);
+// myId.addEventListener("mouseout", mouseOut);
+//
+//function mouseOver() {
+//myId.style.color = "green" ;
+//style.fontSize = "xx-large";
+//}
+//
+// function mouseOut() {
+// myId.style.color = "black";
+// }
+
+// myId.onclick = foo;
+// function foo () {
+// // alert(Date());
+// console.log(this.innerHTML);
+// document.getElementById('tested1').innerText = this.innerHTML;
+// }
+
+//functionality for taking plain text and processing it.
+//to use below console log text1, allhits and reconstructed
+/*??????????????????????????????????????
+need to put this is a function and test if you can do within object or with constructors
+ 
+
+*/
+var taggerfoo = function(arr) {
+
+    var allhitsArr= arr.split(/\b\.\s/);
+    for (i=0;i<allhitsArr.length;i++){
+        allhitsArr[i]= '<span id="sentence'+ i + '">'+ allhitsArr[i]+ ("</span>");
+    } 
+    
+    var reconstructedStory = ""
+    for (j=0;j<allhitsArr.length;j++){
+        reconstructedStory = reconstructedStory +" " +allhitsArr[j];
+    }
+    reconstructedStory = '<div class="dumbo">' + reconstructedStory + '</div>';
+    return reconstructedStory;
+}
+
+myStory.flaggedText= taggerfoo(myStory.storyText);
+
+/*
+
+Below is code that tagger foo is built off
+
+*/
+// var allhits= text1.split(/\b\.\s/);
+// for (i=0;i<allhits.length;i++){
+//     allhits[i]= '<span id="sentence'+ i + '">'+ allhits[i]+ ("</span>");
+// }
+
+// //concatenated split strings from above, into one string. 
+// var reconstructed = ""
+// for (j=0;j<allhits.length;j++){
+//     reconstructed = reconstructed +" " +allhits[j];
+// }
+
+
+//----------code graveyard------------------------------------------------------------------------------
+    //code to tag lines with switch...incomplete idea...could potentially work
+    //have to figure out before beginning of line and at the end of the line
+    //May need to use regex
+    // var tagger = function(arr) {
+    //     var flagCount =0;
+    //     var arrSize = arr.length;
+    //     for (i =0; i< arr.length; i++) {
+    //         switch(arr[i]){
+    //             case (i==0){
+    //                 arr.shift(<)
+    //             }
+    //         }
+    //     }
+    // }
+
+
+
+// (/\b\.\s[A-Z]/);
+
+
+
+//VVVVVVVVVVVVVVVVVVVVVVV below is from w3
+  
+    // var txt = str.replace(/microsoft/i,"W3Schools");
+  
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  
+
+// console.log("Below is what you should see");
+// // var regArr= fullTag(myStory.storyText);
+
+// -------------------------------------
+// fullTag(myStory.storyText);
+// console.log(allhits[1]);
+//------------------------------------------------------------------------------
+// function displayDate() {
+//     document.getElementById("test1").innerHTML = Date();
+// }
+//------------bottom function can be added to the html tag directly 
+//<p id="demo" onclick="myFunction()">Click me.</p>
+//...
+// function myFunction() {
+//     document.getElementById("demo").innerHTML = "YOU CLICKED ME!";}
+//---------------------------------------------------------
+//     document.getElementById("sentence1").addEventListener("mouseover", mouseOver);
+//     document.getElementById("sentence1").addEventListener("mouseout", mouseOut);
+
+// function mouseOver() {
+//     document.getElementById("sentence1").style.color = "green" ;
+// }
+
+// function mouseOut() {
+//     document.getElementById("sentence1").style.color = "black";
+// }
+    // function mouseOver() {
+    //     document.getElementsByClassName("sentence1").style.color = "blue";}
+
+    // function stext() {
+    // // var x = document.getElementById("sentence1");
+    // var y = document.getElementsByClassName("sentence2");
+    // x.style.color = 'red';
+    // y.style.color = 'black';
+// }
+</script>
