@@ -1,0 +1,8 @@
+.container {
+  width:99vw;
+  margin-top:1vh;
+  margin-left:0.5vw;
+  border: 1px solid black;
+  height:85vh;
+  background-color: DarkSlateGray;
+}

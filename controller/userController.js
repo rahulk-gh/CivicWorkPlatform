@@ -37,7 +37,7 @@ module.exports = {
           const destroy = await db.User.updateOne({ username: username }, { sessionExpired: true });
           console.log(`Session for ${destroy} has been deleted!`)
         }, sessionTime);
-        res.location("/");
+        res.location("/dashboard");
         res.end();
       } else {
         res.send("404");
@@ -46,6 +46,10 @@ module.exports = {
   },
   logout: async function (req, res) {
     const Session = await db.User.updateOne({ sessionID: req.cookies.sessionID }, { sessionExpired: true });
-    res.redirect("/");
+    res.redirect("/login");
+  },
+  findUser: async function( req, res) {
+    const user = await db.User.findOne({ sessionID: req.cookies.sessionID });
+    res.send(user.username);
   }
 };

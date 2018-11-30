@@ -1,0 +1,53 @@
+#login-form {
+  border: 2px black solid;
+  width: 25vw;
+  padding-bottom: 5vh;
+  margin-top:10vh;
+  margin-left:35vw;
+}
+
+.login-header {
+  margin-left:2.5vw;
+  color: white;
+  font-size:1.2vw;
+  text-shadow:
+    -2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		2px 2px 0 #000;
+}
+
+.login-input {
+  width:20vw;
+  height:2vh;
+  margin-left:2.5vw;
+}
+
+#login-title {
+  text-align:center;
+  color: SeaGreen;
+  text-shadow:
+    -2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		2px 2px 0 #000;
+}
+
+#login-submit {
+  display:none;
+}
+
+#login-submit-image {
+  margin-top:5vh;
+  width:10vw;
+  margin-left:7.5vw;
+}
+
+#login-submit-image:hover {
+  opacity:0.5;
+}
+
+#login-submit-image:active {
+  opacity:1.0;
+  margin-top:3vh;
+}
