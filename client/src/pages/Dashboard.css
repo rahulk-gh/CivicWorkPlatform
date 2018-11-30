@@ -1,0 +1,48 @@
+#Dashboard-Container {
+  width:99vw;
+  margin-top:1vh;
+  margin-left:0.5vw;
+  border: 1px solid black;
+  height:85vh;
+  background-color: DarkSlateGray;
+}
+
+.All-Story-Container {
+  margin-top:2vh;
+  width:80vw;
+  margin-left:9.5vw;
+  background-color: DarkSlateGray;
+  border: 1px solid black;
+}
+
+.Story-Headers-Author {
+  font-style: italic;
+}
+
+.Story-Headline {
+  color: SeaGreen;
+  font-size:1.2vw;
+  text-shadow:
+    -1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.story-body {
+  display:none;
+}
+
+.All-Story-Container:hover .story-body {
+  display: inline;
+}
+
+.Story-Headers {
+  margin-left:1vw;
+}
+
+#story-body-container {
+  margin-top:1.5vh;
+  margin-left: 1vw;
+  padding-bottom:1.5vh;
+}

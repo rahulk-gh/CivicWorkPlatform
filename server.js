@@ -7,21 +7,14 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(logger("dev"));
-app.use(routes);
 
 // Configure body parsing for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-/* ////////////////////////////////////////////////Production///////////////////////////////////////
-// Serve up static assets
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-*/
-/////////////////////////////////Development/////////////////////////////////////////////////////
-app.use(express.static("citizen/build"));
-//END OF DEVELOPMENT
+app.use(express.static("client/build"));
+
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
