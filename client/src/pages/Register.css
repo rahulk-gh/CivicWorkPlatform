@@ -1,0 +1,52 @@
+#registration-form {
+  border: 2px black solid;
+  width: 25vw;
+  padding-bottom: 5vh;
+  margin-top:10vh;
+  margin-left:35vw;
+}
+
+#registration-title {
+  text-align:center;
+  color: SeaGreen;
+  text-shadow:
+    -2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		2px 2px 0 #000;
+}
+
+.register-header {
+  margin-left:2.5vw;
+  color: white;
+  font-size:1.2vw;
+  text-shadow:
+    -2px -2px 0 #000,
+		2px -2px 0 #000,
+		-2px 2px 0 #000,
+		2px 2px 0 #000;
+}
+
+.register-input {
+  width:20vw;
+  margin-left:2.5vw;
+}
+
+#register-submit {
+  display:none;
+}
+
+#register-submit-image {
+  margin-top:2.5vh;
+  width:10vw;
+  margin-left:7.5vw;
+}
+
+#register-submit-image:hover {
+  opacity:0.5;
+}
+
+#register-submit-image:active {
+  opacity:1.0;
+  margin-top:3vh;
+}

@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const userRoutes = require('./userRoutes.js');
+const storyRoutes = require('./storyRoutes.js');
 const path = require('path');
 
 const cookies = require('cookie-parser');
 router.use(cookies());
 
 //Makes All Routes except public routes require authentication
-/* const publicRoutes = ["/", "/login", "/register"];
+const publicRoutes = ["/", "/login", "/register"];
 const Authenticate = require('./../controller/authenticate.js');
 
 router.route("*").all(function (req, res, next) {
@@ -19,16 +20,17 @@ router.route("*").all(function (req, res, next) {
       }
     });
   }
-}) */
+})
 
 //Public Routes
 router.use("/", userRoutes);
 
 //Protected Routes
+router.use("/", storyRoutes);
 
 
 router.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "../citizen/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 module.exports = router;
